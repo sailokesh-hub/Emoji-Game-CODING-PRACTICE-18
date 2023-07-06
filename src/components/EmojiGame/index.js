@@ -53,7 +53,7 @@ class EmojiGame extends Component {
   }
 
   sortAndCount = id => {
-    const {emojiList} = this.state
+    const {emojiList, score} = this.state
     const filteredList = emojiList.sort(() => Math.random() - 0.5)
     this.setState({emojiList: filteredList})
 
@@ -64,7 +64,6 @@ class EmojiGame extends Component {
       }))
     }
     if (result === false) {
-      const {score} = this.state
       this.setState(prevState => ({
         topScore: Math.max(prevState.topScore, score),
         score: 0,
@@ -78,17 +77,14 @@ class EmojiGame extends Component {
   }
 
   reRender = () => {
-    this.setState({matchFound: true})
+    this.setState({matchFound: true, score: 0})
   }
 
   render() {
     const {emojiList, score, topScore, matchFound} = this.state
-
-    if (topScore === 12) {
+    if (matchFound === false && score > 11) {
       this.reRender()
     }
-    console.log(matchFound)
-
     const homePage = (
       <>
         {emojiList.map(eachItem => (

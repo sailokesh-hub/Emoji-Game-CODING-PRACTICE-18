@@ -15,8 +15,8 @@ const WinOrLoseCard = props => {
   } else if (score === 12) {
     heading = 'You Won'
     para = 'Best Score'
-    src = 'https://assets.ccbp.in/frontend/react-js/win-game-img.png'
-    alt = 'win'
+    src = 'https://assets.ccbp.in/frontend/react-js/won-game-img.png'
+    alt = 'won'
   }
 
   const restart = () => {
